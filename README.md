@@ -130,24 +130,3 @@ Settings are currently hard-coded and can be changed in the source:
 | Allowed CORS origin | `backend/main.py` | `http://localhost:3000` |
 | Backend URL used by the UI | `frontend/app/*.tsx` | `http://localhost:8000` |
 | Attention strike threshold | `frontend/app/WebcamAnalyzer.tsx` | 2 consecutive 1-second checks |
-
-## Limitations and notes
-
-- **Local only**: CORS and API URLs point at `localhost`, so the app needs adjusting before any deployment.
-- **PDF input only**: notes must be text-based PDFs (scanned images won't extract), and only the first ~4,000 characters are used.
-- **Single-user data**: sessions are stored in a local SQLite file with no authentication or per-user separation.
-- **Confidence score is a heuristic**: it is derived from gaze direction and head movement, and is an estimate rather than a measure of answer quality.
-- **LLM quality varies**: scoring and feedback come from a 7B local model and may be inconsistent. The backend includes guardrails, but results aren't a substitute for a real examiner.
-- **Privacy**: webcam video is analysed in the browser and is not sent to the backend. Only your transcribed text and confidence score are stored.
-
-## Roadmap ideas
-
-- Add a `requirements.txt` and environment-variable configuration
-- Support more document types (DOCX, slides) and OCR for scanned notes
-- Per-user accounts and session history
-- Streaming LLM responses for lower latency
-- Exportable PDF reports
-
-## License
-
-No license has been specified yet. Add one (for example MIT) before sharing or accepting contributions.
